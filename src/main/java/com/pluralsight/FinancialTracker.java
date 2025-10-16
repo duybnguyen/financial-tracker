@@ -228,16 +228,30 @@ public class FinancialTracker {
        Display helpers: show data in neat columns
        ------------------------------------------------------------------ */
     private static void displayLedger() {
+        System.out.println("Showing all transactions:");
         System.out.println("Date|Time|Description|Vendor|Amount");
-        System.out.println("====================================================================");
-        for (int i = 0; i < transactions.size(); i++) {
-            System.out.println(transactions.get(i));
+        System.out.println("======================================================================");
+        for (Transaction t : transactions) {
+            System.out.println(t);
         }
+        System.out.println("======================================================================");
     }
 
-    private static void displayDeposits() { /* TODO – only amount > 0               */ }
+    private static void displayDeposits() {
+        System.out.println("Showing all deposits:");
+        System.out.println("Date|Time|Description|Vendor|Amount");
+        System.out.println("======================================================================");
+        for (Transaction t : transactions) {
+            if (t.getAmount() > 0) {
+                System.out.println(t);
+            }
+        }
+        System.out.println("====================================================================");
+    }
 
-    private static void displayPayments() { /* TODO – only amount < 0               */ }
+    private static void displayPayments() {
+
+    }
 
     /* ------------------------------------------------------------------
        Reports menu
