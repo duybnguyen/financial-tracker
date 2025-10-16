@@ -72,9 +72,6 @@ public class FinancialTracker {
      * • Each line looks like: date|time|description|vendor|amount
      */
     public static void loadTransactions(String fileName) {
-        // TODO: create file if it does not exist, then read each line,
-        //       parse the five fields, build a Transaction object,
-        //       and add it to the transactions list.
         File file = new File(fileName);
         try {
             file.createNewFile();
@@ -104,7 +101,6 @@ public class FinancialTracker {
                 Transaction transaction = new Transaction(date, time, parts[2], parts[3], amount);
                 transactions.add(transaction);
             }
-            System.out.println(transactions);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -121,7 +117,6 @@ public class FinancialTracker {
      * Store the amount as-is (positive) and append to the file.
      */
     private static void addDeposit(Scanner scanner) {
-        // TODO
         System.out.println("Enter date and time (yyyy-MM-dd HH:mm:ss): ");
         String dateTimeInput = scanner.nextLine();
 
@@ -165,7 +160,6 @@ public class FinancialTracker {
      * then converted to a negative amount before storing.
      */
     private static void addPayment(Scanner scanner) {
-        // TODO
         System.out.println("Enter date and time (yyyy-MM-dd HH:mm:ss): ");
         String dateTimeInput = scanner.nextLine();
 
@@ -233,8 +227,12 @@ public class FinancialTracker {
     /* ------------------------------------------------------------------
        Display helpers: show data in neat columns
        ------------------------------------------------------------------ */
-    private static void displayLedger() { /* TODO – print all transactions in column format */
-
+    private static void displayLedger() {
+        System.out.println("Date|Time|Description|Vendor|Amount");
+        System.out.println("====================================================================");
+        for (int i = 0; i < transactions.size(); i++) {
+            System.out.println(transactions.get(i));
+        }
     }
 
     private static void displayDeposits() { /* TODO – only amount > 0               */ }

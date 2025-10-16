@@ -21,4 +21,24 @@ public class Transaction {
     public String toString() {
         return date + "|" + time + "|" + description + "|" + vendor + "|" + amount;
     }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public LocalTime getTime() {
+        return time;
+    }
+
+    public String getVendor() {
+        return vendor;
+    }
 }
