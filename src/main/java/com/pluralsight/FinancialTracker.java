@@ -246,11 +246,19 @@ public class FinancialTracker {
                 System.out.println(t);
             }
         }
-        System.out.println("====================================================================");
+        System.out.println("======================================================================");
     }
 
     private static void displayPayments() {
-
+        System.out.println("Showing all payments:");
+        System.out.println("Date|Time|Description|Vendor|Amount");
+        System.out.println("======================================================================");
+        for (Transaction t : transactions) {
+            if (t.getAmount() < 0) {
+                System.out.println(t);
+            }
+        }
+        System.out.println("======================================================================");
     }
 
     /* ------------------------------------------------------------------
