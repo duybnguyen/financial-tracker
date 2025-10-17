@@ -42,7 +42,7 @@ public class FinancialTracker {
         boolean running = true;
 
         while (running) {
-            System.out.println("Welcome to TransactionApp");
+            System.out.println("Welcome to Financial Tracker");
             System.out.println("Choose an option:");
             System.out.println("D) Add Deposit");
             System.out.println("P) Make Payment (Debit)");
@@ -117,7 +117,7 @@ public class FinancialTracker {
      * Store the amount as-is (positive) and append to the file.
      */
     private static void addDeposit(Scanner scanner) {
-        System.out.print("Enter date and time (yyyy-MM-dd HH:mm:ss): ");
+        System.out.print("\nEnter date and time (yyyy-MM-dd HH:mm:ss): ");
         String dateTimeInput = scanner.nextLine();
 
         LocalDateTime dateTime = LocalDateTime.parse(dateTimeInput, DATETIME_FMT);
@@ -160,7 +160,7 @@ public class FinancialTracker {
      * then converted to a negative amount before storing.
      */
     private static void addPayment(Scanner scanner) {
-        System.out.print("Enter date and time (yyyy-MM-dd HH:mm:ss): ");
+        System.out.print("\nEnter date and time (yyyy-MM-dd HH:mm:ss): ");
         String dateTimeInput = scanner.nextLine();
 
         LocalDateTime dateTime = LocalDateTime.parse(dateTimeInput, DATETIME_FMT);
@@ -228,7 +228,7 @@ public class FinancialTracker {
        Display helpers: show data in neat columns
        ------------------------------------------------------------------ */
     private static void displayLedger() {
-        System.out.println("Showing all transactions:");
+        System.out.println("\nShowing all transactions:");
         System.out.println("Date|Time|Description|Vendor|Amount");
         System.out.println("======================================================================");
         for (Transaction t : transactions) {
@@ -250,7 +250,7 @@ public class FinancialTracker {
     }
 
     private static void displayPayments() {
-        System.out.println("Showing all payments:");
+        System.out.println("\nShowing all payments:");
         System.out.println("Date|Time|Description|Vendor|Amount");
         System.out.println("======================================================================");
         for (Transaction t : transactions) {
@@ -312,7 +312,7 @@ public class FinancialTracker {
        ------------------------------------------------------------------ */
     private static void filterTransactionsByDate(LocalDate start, LocalDate end) {
         // TODO – iterate transactions, print those within the range
-        System.out.println("Showing transactions from " + start + " - " + end + ": ");
+        System.out.println("\nShowing transactions from " + start + " - " + end + ": ");
         System.out.println("Date|Time|Description|Vendor|Amount");
         System.out.println("======================================================================");
         boolean found = false;
@@ -330,7 +330,7 @@ public class FinancialTracker {
     }
 
     private static void filterTransactionsByVendor(String vendor) {
-        System.out.println("Showing all " + vendor + " transactions: ");
+        System.out.println("\nShowing all " + vendor + " transactions: ");
         System.out.println("Date|Time|Description|Vendor|Amount");
         System.out.println("======================================================================");
         for (Transaction t: transactions) {
@@ -398,18 +398,5 @@ public class FinancialTracker {
             System.out.println("No transactions matched your requirements");
         }
         System.out.println("======================================================================\n");
-    }
-
-    /* ------------------------------------------------------------------
-       Utility parsers (you can reuse in many places)
-       ------------------------------------------------------------------ */
-    private static LocalDate parseDate(String s) {
-        /* TODO – return LocalDate or null */
-        return null;
-    }
-
-    private static Double parseDouble(String s) {
-        /* TODO – return Double   or null */
-        return null;
     }
 }
