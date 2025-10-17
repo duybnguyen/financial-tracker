@@ -1,16 +1,22 @@
-# Project Title
+# Financial Tracker
 
 ## Description of the Project
 
-Briefly describe what this Java console application does. Mention its purpose and who the intended users are. Explain the main functionality and what problems it aims to solve.
+Financial Tracker is a Java console application designed to help 
+users efficiently manage and analyze their financial transactions. 
+The program allows users to record, view, and filter transactions based 
+on various criteria such as date, amount, or category.
 
 ## User Stories
 
-List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
-
-- As a user, I want to be able to input my data, so that the application can process it accordingly.
-- As a user, I want to receive immediate feedback, so I can understand what to do next.
-
+- As a user, I want to record a deposit so that I can track income or money received.
+- As a user, I want to record a payment so that I can track expenses and outgoing money.
+- As a user, I want the app to load my existing transactions when I start the program so that I can see my current financial records.
+- As a user, I want to view all transactions in the ledger so that I can review all my financial activity.
+- As a user, I want to view only payments so that I can track expenses separately from income.
+- As a user, I want to view only deposits so that I can easily see my income sources.
+- As a user, I want to search for transactions by vendor name so that I can see all purchases or payments to a specific vendor.
+- As a user, I want to filter my search from month to date, previous month, year to date, and previous year so I can analyze my financial history
 ## Setup
 
 Instructions on how to set up and run the project using IntelliJ IDEA.
@@ -18,7 +24,7 @@ Instructions on how to set up and run the project using IntelliJ IDEA.
 ### Prerequisites
 
 - IntelliJ IDEA: Ensure you have IntelliJ IDEA installed, which you can download from [here](https://www.jetbrains.com/idea/download/).
-- Java SDK: Make sure Java SDK is installed and configured in IntelliJ.
+- Java SDK: Make sure Java SDK (version 17 or above) is installed and properly configured in IntelliJ.
 
 ### Running the Application in IntelliJ
 
@@ -32,37 +38,35 @@ Follow these steps to get your application running within IntelliJ IDEA:
 
 ## Technologies Used
 
-- Java: Mention the version you are using.
-- Any additional libraries or frameworks used in the project.
+- Java 17
+- File I/O (java.io package)
+- Scanner
+- File Writer
+- java.time package
 
 ## Demo
 
-Include screenshots or GIFs that show your application in action. Use tools like [Giphy Capture](https://giphy.com/apps/giphycapture) to record a GIF of your application.
-
-![Application Screenshot](path/to/your/screenshot.png)
+<img src="./README-images/deposit.PNG" alt="deposit" width="400">
+<img src="./README-images/payment.PNG" alt="payment" width="400">
+<img src="./README-images/all-transactions.PNG" alt="deposit" width="400">
+<img src="./README-images/all-deposits.PNG" alt="deposit" width="400">
+<img src="./README-images/all-payments.PNG" alt="deposit" width="400">
+<img src="./README-images/all-previous-year.PNG" alt="deposit" width="400">
+<img src="./README-images/search-by-vendor.PNG" alt="deposit" width="400">
 
 ## Future Work
 
-Outline potential future enhancements or functionalities you might consider adding:
-
-- Additional feature to be developed.
-- Improvement of current functionalities.
+- Implement a graphical user interface
+- Include data export options (CSV, PDF).
+- Add budget tracking and reporting features.
 
 ## Resources
 
-List resources such as tutorials, articles, or documentation that helped you during the project.
-
 - [Java Programming Tutorial](https://www.example.com)
 - [Effective Java](https://www.example.com)
-
-## Team Members
-
-- **Name 1** - Specific contributions or roles.
-- **Name 2** - Specific contributions or roles.
+- [Class LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html)
 
 ## Thanks
 
-Express gratitude towards those who provided help, guidance, or resources:
+- Thank you to Ray Maroun for continuous support and guidance.
 
-- Thank you to [Mentor's Name] for continuous support and guidance.
-- A special thanks to all teammates for their dedication and teamwork.

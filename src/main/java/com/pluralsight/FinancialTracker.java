@@ -117,7 +117,7 @@ public class FinancialTracker {
      * Store the amount as-is (positive) and append to the file.
      */
     private static void addDeposit(Scanner scanner) {
-        System.out.println("Enter date and time (yyyy-MM-dd HH:mm:ss): ");
+        System.out.print("Enter date and time (yyyy-MM-dd HH:mm:ss): ");
         String dateTimeInput = scanner.nextLine();
 
         LocalDateTime dateTime = LocalDateTime.parse(dateTimeInput, DATETIME_FMT);
@@ -125,13 +125,13 @@ public class FinancialTracker {
         LocalDate date = dateTime.toLocalDate();
         LocalTime time = dateTime.toLocalTime();
 
-        System.out.println("Enter description: ");
+        System.out.print("Enter description: ");
         String description = scanner.nextLine();
 
-        System.out.println("Enter vendor: ");
+        System.out.print("Enter vendor: ");
         String vendor = scanner.nextLine();
 
-        System.out.println("Enter amount: ");
+        System.out.print("Enter amount: ");
         double amount = Double.parseDouble(scanner.nextLine());
 
         if (amount <= 0) {
@@ -144,7 +144,7 @@ public class FinancialTracker {
 
         try {
             FileWriter fileWriter = new FileWriter(FILE_NAME, true);
-            fileWriter.write(date + "|" + time + "|" + description + "|" + vendor + "|" + amount + "\n");
+            fileWriter.write("\n" + date + "|" + time + "|" + description + "|" + vendor + "|" + amount);
             fileWriter.close();
             System.out.println("Deposit added successfully\n");
         } catch (IOException e) {
@@ -160,7 +160,7 @@ public class FinancialTracker {
      * then converted to a negative amount before storing.
      */
     private static void addPayment(Scanner scanner) {
-        System.out.println("Enter date and time (yyyy-MM-dd HH:mm:ss): ");
+        System.out.print("Enter date and time (yyyy-MM-dd HH:mm:ss): ");
         String dateTimeInput = scanner.nextLine();
 
         LocalDateTime dateTime = LocalDateTime.parse(dateTimeInput, DATETIME_FMT);
@@ -168,13 +168,13 @@ public class FinancialTracker {
         LocalDate date = dateTime.toLocalDate();
         LocalTime time = dateTime.toLocalTime();
 
-        System.out.println("Enter description: ");
+        System.out.print("Enter description: ");
         String description = scanner.nextLine();
 
-        System.out.println("Enter vendor: ");
+        System.out.print("Enter vendor: ");
         String vendor = scanner.nextLine();
 
-        System.out.println("Enter amount: ");
+        System.out.print("Enter amount: ");
         double amount = Double.parseDouble(scanner.nextLine());
 
         if (amount <= 0) {
@@ -188,7 +188,7 @@ public class FinancialTracker {
 
         try {
             FileWriter fileWriter = new FileWriter(FILE_NAME, true);
-            fileWriter.write(date + "|" + time + "|" + description + "|" + vendor + "|" + amount + "\n");
+            fileWriter.write("\n" + date + "|" + time + "|" + description + "|" + vendor + "|" + amount);
             fileWriter.close();
             System.out.println("Payment added successfully!\n");
         } catch (IOException e) {
