@@ -234,7 +234,7 @@ public class FinancialTracker {
         for (Transaction t : transactions) {
             System.out.println(t);
         }
-        System.out.println("======================================================================");
+        System.out.println("======================================================================\n");
     }
 
     private static void displayDeposits() {
@@ -246,7 +246,7 @@ public class FinancialTracker {
                 System.out.println(t);
             }
         }
-        System.out.println("======================================================================");
+        System.out.println("======================================================================\n");
     }
 
     private static void displayPayments() {
@@ -258,7 +258,7 @@ public class FinancialTracker {
                 System.out.println(t);
             }
         }
-        System.out.println("======================================================================");
+        System.out.println("======================================================================\n");
     }
 
     /* ------------------------------------------------------------------
@@ -326,7 +326,7 @@ public class FinancialTracker {
         if (!found) {
             System.out.println("No transaction found in this range.");
         }
-        System.out.println("======================================================================");
+        System.out.println("======================================================================\n");
     }
 
     private static void filterTransactionsByVendor(String vendor) {
@@ -338,12 +338,66 @@ public class FinancialTracker {
                 System.out.println(t);
             }
         }
-        System.out.println("======================================================================");
+        System.out.println("======================================================================\n");
     }
 
     private static void customSearch(Scanner scanner) {
-        // TODO – prompt for any combination of date range, description,
-        //        vendor, and exact amount, then display matches
+        System.out.println("\nCustom Transaction Search");
+        System.out.println("======================================================================");
+        System.out.print("Enter start date (yyyy-MM-dd) or leave blank: ");
+        String startDateInput = scanner.nextLine();
+        LocalDate startDate = null;
+        if (!startDateInput.isEmpty()) {
+            startDate = LocalDate.parse(startDateInput, DATE_FMT);
+        }
+
+        System.out.print("Enter end date (yyyy-MM-dd) or leave blank: ");
+        String endDateInput = scanner.nextLine();
+        LocalDate endDate = null;
+        if (!endDateInput.isEmpty()) {
+            endDate = LocalDate.parse(endDateInput, DATE_FMT);
+        }
+
+        System.out.print("Enter description to search or leave blank: ");
+        String description = scanner.nextLine();
+
+        System.out.print("Enter vendor to search or leave blank: ");
+        String vendor = scanner.nextLine();
+
+        System.out.print("Enter amount to search or leave blank: ");
+        String amountInput = scanner.nextLine();
+        Double amount = null;
+        if (!amountInput.isEmpty()) {
+            amount = Double.parseDouble(amountInput);
+        }
+
+        System.out.println("\nSearch Result(s):");
+        boolean found = false;
+
+        for (Transaction t: transactions) {
+            if (startDate != null && t.getDate().isBefore(startDate)) {
+                continue;
+            }
+            if (endDate != null && t.getDate().isAfter(endDate)) {
+                continue;
+            }
+            if (!description.isEmpty() && !t.getDescription().equalsIgnoreCase(description)) {
+                continue;
+            }
+            if (!vendor.isEmpty() && !t.getVendor().equalsIgnoreCase(vendor)) {
+                continue;
+            }
+            if (amount != null && t.getAmount() != amount) {
+                continue;
+            }
+
+            System.out.println(t);
+            found = true;
+        }
+        if (!found) {
+            System.out.println("No transactions matched your requirements");
+        }
+        System.out.println("======================================================================\n");
     }
 
     /* ------------------------------------------------------------------
