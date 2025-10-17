@@ -72,6 +72,7 @@ public class FinancialTracker {
      * • Each line looks like: date|time|description|vendor|amount
      */
     public static void loadTransactions(String fileName) {
+        // creates new file if it doesn't already exist
         File file = new File(fileName);
         try {
             file.createNewFile();
@@ -85,7 +86,7 @@ public class FinancialTracker {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
-
+            // reads each line and splits it by "|" to get the individual parts of the transaction
             while((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split("\\|");
 
@@ -117,6 +118,7 @@ public class FinancialTracker {
      * Store the amount as-is (positive) and append to the file.
      */
     private static void addDeposit(Scanner scanner) {
+        // prompts user for all necessary fields
         System.out.print("\nEnter date and time (yyyy-MM-dd HH:mm:ss): ");
         String dateTimeInput = scanner.nextLine();
 
@@ -138,7 +140,7 @@ public class FinancialTracker {
             System.out.println("Deposit amount must be greater than 0!");
             return;
         }
-
+        // creates a new transaction object
         Transaction transaction = new Transaction(date, time, description, vendor, amount);
         transactions.add(transaction);
 
@@ -160,6 +162,7 @@ public class FinancialTracker {
      * then converted to a negative amount before storing.
      */
     private static void addPayment(Scanner scanner) {
+        // prompts user for all necessary fields
         System.out.print("\nEnter date and time (yyyy-MM-dd HH:mm:ss): ");
         String dateTimeInput = scanner.nextLine();
 
@@ -182,7 +185,7 @@ public class FinancialTracker {
             return;
         }
         amount = -amount;
-
+        // creates a new transaction object
         Transaction transaction = new Transaction(date, time, description, vendor, amount);
         transactions.add(transaction);
 
@@ -228,6 +231,7 @@ public class FinancialTracker {
        Display helpers: show data in neat columns
        ------------------------------------------------------------------ */
     private static void displayLedger() {
+        // loops through all transactions and print it
         System.out.println("\nShowing all transactions:");
         System.out.println("Date|Time|Description|Vendor|Amount");
         System.out.println("======================================================================");
@@ -238,6 +242,7 @@ public class FinancialTracker {
     }
 
     private static void displayDeposits() {
+        // loops through all transactions and print if > 0
         System.out.println("Showing all deposits:");
         System.out.println("Date|Time|Description|Vendor|Amount");
         System.out.println("======================================================================");
@@ -250,6 +255,7 @@ public class FinancialTracker {
     }
 
     private static void displayPayments() {
+        // loops through all transactions and print if < 0
         System.out.println("\nShowing all payments:");
         System.out.println("Date|Time|Description|Vendor|Amount");
         System.out.println("======================================================================");
@@ -311,7 +317,7 @@ public class FinancialTracker {
        Reporting helpers
        ------------------------------------------------------------------ */
     private static void filterTransactionsByDate(LocalDate start, LocalDate end) {
-        // TODO – iterate transactions, print those within the range
+        // loops through all transactions and print if it's the same or after the start date and before the end date
         System.out.println("\nShowing transactions from " + start + " - " + end + ": ");
         System.out.println("Date|Time|Description|Vendor|Amount");
         System.out.println("======================================================================");
@@ -330,6 +336,7 @@ public class FinancialTracker {
     }
 
     private static void filterTransactionsByVendor(String vendor) {
+        // loops through all transactions and print if vendor equals parameter ignoring case
         System.out.println("\nShowing all " + vendor + " transactions: ");
         System.out.println("Date|Time|Description|Vendor|Amount");
         System.out.println("======================================================================");
@@ -342,6 +349,7 @@ public class FinancialTracker {
     }
 
     private static void customSearch(Scanner scanner) {
+
         System.out.println("\nCustom Transaction Search");
         System.out.println("======================================================================");
         System.out.print("Enter start date (yyyy-MM-dd) or leave blank: ");
@@ -374,6 +382,7 @@ public class FinancialTracker {
         System.out.println("\nSearch Result(s):");
         boolean found = false;
 
+        // loops through all transaction and skips current iteration if any requirement doesn't match
         for (Transaction t: transactions) {
             if (startDate != null && t.getDate().isBefore(startDate)) {
                 continue;
